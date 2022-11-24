@@ -79,7 +79,7 @@ class RuleServiceExceptionTest
     @Test
     void getRuleByIdExceptionTest()
     {
-         RuleSchema ruleSchemaTest =new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+         RuleSchema ruleSchemaTest =new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findById(BigInteger.valueOf(Long.parseLong(String.valueOf(1))))).thenReturn(Optional.empty());
         Assertions.assertThrows(EntityIdNotFoundException.class,()-> mockRuleServiceImpl.getRuleById(RULE_ID));

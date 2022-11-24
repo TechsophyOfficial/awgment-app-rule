@@ -91,7 +91,7 @@ class RuleControllerTest
     void getRuleByIdTest() throws Exception
     {
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
-        Mockito.when(mockRuleService.getRuleById(RULE_ID)).thenReturn(new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME));
+        Mockito.when(mockRuleService.getRuleById(RULE_ID)).thenReturn(new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL_RULE + VERSION_V1_1 + RULES_BY_ID_URL, 1)
                 .with(jwtRead)
                 .contentType(MediaType.APPLICATION_JSON);
@@ -104,8 +104,8 @@ class RuleControllerTest
     {
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
         Mockito.when(mockRuleService.getAllRules(true, null,null,null)).thenReturn(
-                Stream.of(new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME),
-                        new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME)));
+                Stream.of(new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW),
+                        new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW)));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL_RULE + VERSION_V1_1 + RULES_URL)
                 .param(PARAM_INCLUDE_CONTENT, String.valueOf(true)).param(PARAM_DEPLOYMENT, PARAM_DEPLOYMENT_VALUE)
                 .with(jwtRead)
@@ -144,8 +144,8 @@ class RuleControllerTest
     {
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
         Mockito.when(mockRuleService.searchRuleByIdOrNameLike(ID_OR_NAME_LIKE)).thenReturn(
-                Stream.of( new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME),
-                        new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME)));
+                Stream.of( new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW),
+                        new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW)));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL_RULE + VERSION_V1_1 + SEARCH_RULES_URL)
                 .param(PARAM_ID_OR_NAME_LIKE, PARAM_ID_OR_NAME_LIKE_VALUE)
                 .with(jwtRead)

@@ -22,8 +22,6 @@ public class RuleAuditSchema
     byte[] content;
     String createdById;
     Instant createdOn;
-    String createdByName;
     String updatedById;
     Instant updatedOn;
-    String updatedByName;
 }

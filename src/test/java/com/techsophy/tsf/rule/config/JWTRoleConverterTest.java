@@ -2,6 +2,7 @@ package com.techsophy.tsf.rule.config;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.techsophy.tsf.rule.utils.TokenUtils;
 import com.techsophy.tsf.rule.utils.WebClientWrapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,7 @@ import java.time.Instant;
 import java.util.*;
 import static com.techsophy.tsf.rule.constants.RuleTestConstants.GET;
 import static com.techsophy.tsf.rule.constants.RuleTestConstants.TEST_ACTIVE_PROFILE;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles(TEST_ACTIVE_PROFILE)
@@ -32,6 +32,9 @@ class JWTRoleConverterTest
 
     @Mock
     WebClientWrapper webClientWrapper;
+
+    @Mock
+    TokenUtils tokenUtils;
 
     @InjectMocks
     JWTRoleConverter jwtRoleConverter;
@@ -51,6 +54,7 @@ class JWTRoleConverterTest
                 .thenReturn("abc");
         when(mockObjectMapper.readValue("abc",Map.class)).thenReturn(map);
         when(mockObjectMapper.convertValue(any(),eq(List.class))).thenReturn(list);
+        when(tokenUtils.getIssuerFromToken(anyString())).thenReturn("techsophy-platform");
         Collection grantedAuthority =  jwtRoleConverter.convert(jwt);
         Assertions.assertNotNull(grantedAuthority);
     }

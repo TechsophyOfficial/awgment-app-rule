@@ -91,7 +91,7 @@ class RuleServiceTest
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA_SCHEMA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
         RuleDefinition ruleDefinitionTest = objectMapperTest.readValue(ruleDataTest, RuleDefinition.class);
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATED_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         when(mockObjectMapper.convertValue(any(), eq(RuleAuditSchema.class))).thenReturn(ruleAuditSchema);
         when(mockUserDetails.getUserDetails()).thenReturn(userList);
         when(mockIdGenerator.nextId()).thenReturn(BigInteger.valueOf(Long.parseLong(RULE_ID)));
@@ -110,7 +110,7 @@ class RuleServiceTest
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
         RuleDefinition ruleDefinitionTest = objectMapperTest.readValue(ruleDataTest,RuleDefinition.class);
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATED_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         when(mockRuleDefinitionRepository.save(any())).thenReturn(ruleDefinitionTest.withId(BigInteger.valueOf(Long.parseLong(RULE_ID))));
         when(mockObjectMapper.convertValue(any(), eq(RuleAuditSchema.class))).thenReturn(ruleAuditSchema);
         Mockito.when(mockUserDetails.getUserDetails()).thenReturn(userList);
@@ -131,7 +131,7 @@ class RuleServiceTest
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
         RuleDefinition ruleDefinitionTest = objectMapperTest.readValue(ruleDataTest,RuleDefinition.class);
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATED_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         when(mockRuleDefinitionRepository.save(any())).thenReturn(ruleDefinitionTest.withId(BigInteger.valueOf(Long.parseLong(RULE_ID))));
         when(mockObjectMapper.convertValue(any(), eq(RuleAuditSchema.class))).thenReturn(ruleAuditSchema);
         Mockito.when(mockUserDetails.getUserDetails()).thenReturn(userList);
@@ -151,7 +151,7 @@ class RuleServiceTest
         ObjectMapper objectMapperTest = new ObjectMapper();
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
-        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleDefinition ruleDefinitionTest=objectMapperTest.readValue(ruleDataTest,RuleDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findById(BigInteger.valueOf(Long.parseLong(String.valueOf(1))))).thenReturn(java.util.Optional.ofNullable(ruleDefinitionTest));
@@ -165,7 +165,7 @@ class RuleServiceTest
         ObjectMapper objectMapperTest = new ObjectMapper();
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String rulesDataTest=new String(inputStreamTest.readAllBytes());
-        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleDefinition ruleDefinitionTest=objectMapperTest.readValue(rulesDataTest,RuleDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findAll()).thenReturn(List.of(ruleDefinitionTest));
@@ -179,7 +179,7 @@ class RuleServiceTest
         ObjectMapper objectMapperTest = new ObjectMapper();
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String rulesDataTest=new String(inputStreamTest.readAllBytes());
-        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleDefinition ruleDefinitionTest=objectMapperTest.readValue(rulesDataTest,RuleDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findByIdIn(List.of(RuleTestConstants.ID_NUMBER))).thenReturn(List.of(ruleDefinitionTest));
@@ -193,7 +193,7 @@ class RuleServiceTest
         ObjectMapper objectMapperTest = new ObjectMapper();
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String rulesDataTest=new String(inputStreamTest.readAllBytes());
-        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleDefinition ruleDefinitionTest=objectMapperTest.readValue(rulesDataTest,RuleDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findRulesByQSorting(Q,null)).thenReturn(Stream.of(ruleDefinitionTest));
@@ -216,7 +216,7 @@ class RuleServiceTest
         ObjectMapper objectMapperTest=new ObjectMapper();
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String ruleDataTest =new String(inputStreamTest.readAllBytes());
-        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleSchema ruleSchemaTest=new RuleSchema(RULE_ID, RULE_NAME, RULE_CONTENT, RULE_VERSION, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleDefinition ruleDefinitionTest=objectMapperTest.readValue(ruleDataTest,RuleDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleSchema.class))).thenReturn(ruleSchemaTest);
         when(mockRuleDefinitionRepository.findByNameOrId(ID_OR_NAME_LIKE)).thenReturn(Collections.singletonList(ruleDefinitionTest));

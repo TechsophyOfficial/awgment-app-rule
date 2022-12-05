@@ -68,7 +68,7 @@ class RuleAuditServiceImplTest
         @Cleanup InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA_SCHEMA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
         RuleAuditDefinition ruleDefinitionTest = objectMapperTest.readValue(ruleDataTest, RuleAuditDefinition.class);
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATED_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         when(this.mockObjectMapper.convertValue(any(), eq(RuleAuditDefinition.class))).thenReturn(ruleDefinitionTest);
         when(mockRuleDefinitionAuditRepository.save(any())).thenReturn(ruleDefinitionTest.withId(BigInteger.valueOf(Long.parseLong(RULE_ID))));
         mockRuleAuditServiceImpl.saveRule(ruleAuditSchema);
@@ -81,7 +81,7 @@ class RuleAuditServiceImplTest
         ObjectMapper objectMapperTest = new ObjectMapper();
         InputStream inputStreamTest = new ClassPathResource(TEST_RULES_DATA).getInputStream();
         String ruleDataTest = new String(inputStreamTest.readAllBytes());
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATED_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleAuditDefinition ruleDefinitionTest=objectMapperTest.readValue(ruleDataTest,RuleAuditDefinition.class);
         when(this.mockObjectMapper.convertValue(any(),eq(RuleAuditSchema.class))).thenReturn(ruleAuditSchema);
         when(mockRuleDefinitionAuditRepository.findById(BigInteger.valueOf(Long.parseLong(TEST_ID)),1)).thenReturn(Optional.ofNullable(ruleDefinitionTest));

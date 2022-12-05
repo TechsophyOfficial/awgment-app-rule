@@ -73,7 +73,7 @@ class RuleAuditControllerTest
     void saveRuleTest() throws Exception
     {
         Mockito.when(mockTokenUtils.getIssuerFromToken(TOKEN)).thenReturn(TENANT);
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(TEST_ID,RULE_ID, RULE_NAME, RULE_VERSION,RULE_CONTENT ,CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         RuleResponse ruleResponse=new RuleResponse(TEST_ID,RULE_VERSION);
         Mockito.when(ruleAuditService.saveRule(ruleAuditSchema)).thenReturn(ruleResponse);
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.post(BASE_URL+VERSION_V1+ HISTORY+RULES_URL)
@@ -86,7 +86,7 @@ class RuleAuditControllerTest
     @Test
     void getRulesByIdTest() throws Exception
     {
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(TEST_ID,RULE_ID, RULE_NAME, RULE_VERSION,RULE_CONTENT ,CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         Mockito.when(ruleAuditService.getRulesById(TEST_ID,RULE_VERSION)).thenReturn(ruleAuditSchema);
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL+VERSION_V1+ HISTORY+RULE_VERSION_BY_ID_URL,1,1)
                 .with(jwtRead)
@@ -113,7 +113,7 @@ class RuleAuditControllerTest
     @Test
     void getAllRulesSortingTest() throws Exception
     {
-        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(TEST_ID,RULE_ID, RULE_NAME, RULE_VERSION,RULE_CONTENT ,CREATED_BY_ID_VALUE, CREATED_ON_NOW,CREATEDE_BY_NAME, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW,UPDATED_BY_NAME);
+        RuleAuditSchema ruleAuditSchema=new RuleAuditSchema(RULE_ID,RULE_ID, RULE_NAME,RULE_VERSION, RULE_CONTENT, CREATED_BY_ID_VALUE, CREATED_ON_NOW, UPDATED_BY_ID_VALUE, UPDATED_ON_NOW);
         Mockito.when(ruleAuditService.getAllRules(TEST_ID,true, Sort.by(RULE_NAME))).thenReturn(Stream.of(ruleAuditSchema));
         RequestBuilder requestBuilderTest = MockMvcRequestBuilders.get(BASE_URL+VERSION_V1+ HISTORY+RULE_BY_ID_URL,1)
                 .param(INCLUDE_CONTENT,TRUE)

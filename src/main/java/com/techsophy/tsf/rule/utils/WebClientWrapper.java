@@ -113,7 +113,7 @@ public class WebClientWrapper
         }
     }
 
-    public String availableMethod(Exception ex) throws Exception {
+    public String availableMethod(Exception ex) throws ExternalServiceErrorException {
         String abc = ex.getMessage();
         throw new ExternalServiceErrorException(SERVICE_NOT_AVAILABLE,globalMessageSource.get(SERVICE_NOT_AVAILABLE, abc));
     }

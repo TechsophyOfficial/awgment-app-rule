@@ -83,7 +83,6 @@ public class RuleServiceImpl implements RuleService
             }
         ruleData.setUpdatedOn(Instant.now());
         ruleData.setUpdatedById(loggedInUserId);
-        ruleData.setUpdatedByName(loggedInUserDetails.get(FIRST_NAME)+SPACE+loggedInUserDetails.get(LAST_NAME));
         RuleDefinition ruleDefinition=this.ruleDefinitionRepository.save(ruleData);
         RuleAuditSchema ruleAuditSchema =this.objectMapper.convertValue(ruleData,RuleAuditSchema.class);
         ruleAuditSchema.setId(idGeneratorImpl.nextId().toString());
@@ -189,7 +188,6 @@ public class RuleServiceImpl implements RuleService
         ruleData = new RuleDefinition(uniqueId, name, version, content);
         ruleData.setCreatedOn(Instant.now());
         ruleData.setCreatedById(loggedInUserId);
-        ruleData.setCreatedByName(loggedInUserDetails.get(FIRST_NAME)+SPACE+loggedInUserDetails.get(LAST_NAME));
         return ruleData;
     }
 }
